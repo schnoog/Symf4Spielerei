@@ -21,6 +21,6 @@ mysqldump -uroot mysymfony > mysymfony.sql
 
 git add .
 git commit -m "$TestEingabe"
-##git push
+git push
 echo "Add,Commit,Push done"
 fi
