@@ -16,8 +16,11 @@ if [ "$TestEingabe" == "" ]
 then
 echo "Kein Kommentar,da geht nichts"
 else
+
+mysqldump mysymfony > mysymfony.sql
+
 git add .
 git commit -m "$TestEingabe"
-git push
+##git push
 echo "Add,Commit,Push done"
 fi
