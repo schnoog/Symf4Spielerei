@@ -17,7 +17,7 @@ then
 echo "Kein Kommentar,da geht nichts"
 else
 
-mysqldump mysymfony > mysymfony.sql
+mysqldump -uroot mysymfony > mysymfony.sql
 
 git add .
 git commit -m "$TestEingabe"
