@@ -7,6 +7,7 @@ use Pd\MenuBundle\Builder\ItemInterface;
 use Pd\MenuBundle\Builder\Menu;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
+
 class UserMenu extends Menu
 {
     /**
@@ -17,6 +18,7 @@ class UserMenu extends Menu
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+
     }
         
     /**
@@ -24,6 +26,8 @@ class UserMenu extends Menu
      */
     public function createMenu(array $options = []): ItemInterface
     {
+
+        //$tmp = new FOS\UserBundle\Security\UserProvider;
         // Create Root Item
         $menu = $this
             ->createRoot('user_menu', true) // Create event is "settings_menu.event"
