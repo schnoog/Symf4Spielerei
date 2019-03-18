@@ -4,8 +4,52 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e30c559afc3842a805132028ac7adcb9",
+    "content-hash": "7a6400a7320ce8d3c63d9174600141a2",
     "packages": [
+        {
+            "name": "appaydin/pd-menu",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/appaydin/pd-menu.git",
+                "reference": "3c48ec9dc4d06b047ab0c64a63530ce0e0f507b2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/appaydin/pd-menu/zipball/3c48ec9dc4d06b047ab0c64a63530ce0e0f507b2",
+                "reference": "3c48ec9dc4d06b047ab0c64a63530ce0e0f507b2",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "twig/twig": "~2"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Pd\\MenuBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Kerem APAYDIN",
+                    "homepage": "http://apaydin.me"
+                }
+            ],
+            "description": "Symfony Simple Menu Bundle",
+            "homepage": "https://github.com/appaydin/pd-menu",
+            "keywords": [
+                "menu",
+                "pd-admin",
+                "pd-menu",
+                "symfony-menu"
+            ],
+            "time": "2019-03-16T13:14:47+00:00"
+        },
         {
             "name": "doctrine/annotations",
             "version": "v1.6.0",

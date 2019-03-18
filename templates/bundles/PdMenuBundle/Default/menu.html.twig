@@ -1,0 +1,45 @@
+{% extends '@PdMenu/Default/menuBase.html.twig' %}
+
+{# Begin Menu #}
+{% block menu_begin %}
+    <ul id="{{ menu.id }}" {{ arrayToAttr(menu.childAttr, {' class': 'pd-menu navbar-nav mr-auto'}, options) }}>
+        {% for depth in menu.child %}
+            {% set menu = depth %}
+            {{ block('menu_item') }}
+        {% endfor %}
+                </ul>
+{% endblock %}
+
+{# Create Menu Item #}
+{% block menu_item %}
+
+    {% if menu.child|length %} {# WennDropDownRoot #}
+    <!--HasChilds-->
+                                        <li class="nav-item dropdown" >
+                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain) : menu.label }}</a>        
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            {% for depth in menu.child %}
+                                                {% set menu = depth %}
+                                                {{ block('menu_item') }}
+                                            {% endfor %}
+                                            </div>
+                                        </li>
+    <!--HadChilds-->
+    {% else %}
+        {# Create Link #}
+        {% if menu.link %} 
+                                                <a class="dropdown-item" href="{{ menu.link }}" {{ arrayToAttr(menu.linkAttr, [], options) }}>
+                                                    {% if menu.extra('label_icon') %}
+                                                        <i class="material-icons">{{ menu.extra('label_icon') }}</i>
+                                                    {% endif %}
+                                                        {{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain) : menu.label }}
+                                                </a>
+        {% else %}
+            {% if menu.extra('label_icon') %}
+                <i class="material-icons">{{ menu.extra('label_icon') }}</i>
+            {% endif %}
+                {{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain) : menu.label }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+

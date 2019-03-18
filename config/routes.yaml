@@ -1,3 +1,7 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+#main:
+#    path:     /home_route
+#    controller: App\Controller\AboutController::list

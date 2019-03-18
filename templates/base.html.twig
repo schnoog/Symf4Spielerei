@@ -16,10 +16,26 @@
 
     </head>
     <body>
+        {% block navigation %}
+        <!--NAV-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        {{ pd_menu_render('App\\Menu\\FirstMenu', {
+            
+                        }) }}
+                </div>
+        </nav>
+        <!--NAV-->
+        {% endblock %}
         {% block body %}{% endblock %}
 
         <script src="{{ asset('/myassets/jquery/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('/myassets/popper/popper.min.js') }}" ></script>        
+        <script src="{{ asset('/myassets/popper/popper.min.js') }}" ></script>
+        <script src="{{ asset('/myassets/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>           
         {% block javascripts %}
         {% endblock %}
     </body>
