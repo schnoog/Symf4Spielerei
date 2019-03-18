@@ -1,5 +1,7 @@
 {% extends '@PdMenu/Default/menuBase.html.twig' %}
 
+{% set childwork="0" %}
+
 {# Begin Menu #}
 {% block menu_begin %}
     <ul id="{{ menu.id }}" {{ arrayToAttr(menu.childAttr, {' class': 'pd-menu navbar-nav mr-auto'}, options) }}>
@@ -7,17 +9,17 @@
             {% set menu = depth %}
             {{ block('menu_item') }}
         {% endfor %}
-                </ul>
+    </ul>
 {% endblock %}
 
 {# Create Menu Item #}
 {% block menu_item %}
-
     {% if menu.child|length %} {# WennDropDownRoot #}
+    {% set childwork="1" %}
     <!--HasChilds-->
                                         <li class="nav-item dropdown" >
                                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain) : menu.label }}</a>        
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <div aria-labelledby="navbarDropdown" {{ arrayToAttr(menu.linkAttr, [], options) }}>
                                             {% for depth in menu.child %}
                                                 {% set menu = depth %}
                                                 {{ block('menu_item') }}
@@ -25,15 +27,27 @@
                                             </div>
                                         </li>
     <!--HadChilds-->
+    {% set childwork="0" %}
     {% else %}
         {# Create Link #}
-        {% if menu.link %} 
-                                                <a class="dropdown-item" href="{{ menu.link }}" {{ arrayToAttr(menu.linkAttr, [], options) }}>
-                                                    {% if menu.extra('label_icon') %}
-                                                        <i class="material-icons">{{ menu.extra('label_icon') }}</i>
-                                                    {% endif %}
-                                                        {{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain) : menu.label }}
-                                                </a>
+        {% if menu.link %}
+                {% if childwork == "0" %}
+                        <li class="nav-item " >
+                            <a class="nav-link" href="{{ menu.link }}" {{ arrayToAttr(menu.linkAttr, [], options) }}>
+                                {% if menu.extra('label_icon') %}
+                                    <i class="material-icons">{{ menu.extra('label_icon') }}</i>
+                                    {% endif %}
+                                {{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain) : menu.label }}
+                            </a>
+                        </li>
+                {% else %}
+                            <a class="dropdown-item" href="{{ menu.link }}" {{ arrayToAttr(menu.linkAttr, [], options) }}>
+                                    {% if menu.extra('label_icon') %}
+                                        <i class="material-icons">{{ menu.extra('label_icon') }}</i>
+                                        {% endif %}
+                                    {{ menu.extra('label_translate', true) ? menu.label|trans([], options.trans_domain) : menu.label }}
+                            </a>        
+                {% endif %}                                                 
         {% else %}
             {% if menu.extra('label_icon') %}
                 <i class="material-icons">{{ menu.extra('label_icon') }}</i>

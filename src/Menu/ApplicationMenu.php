@@ -7,7 +7,7 @@ use Pd\MenuBundle\Builder\ItemInterface;
 use Pd\MenuBundle\Builder\Menu;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class FirstMenu extends Menu
+class ApplicationMenu extends Menu
 {
     /**
      * @var ContainerInterface 
@@ -27,59 +27,21 @@ class FirstMenu extends Menu
         // Create Root Item
         $menu = $this
             ->createRoot('settings_menu', true) // Create event is "settings_menu.event"
-            ->setChildAttr(['data-parent' => 'easyadmin']); // Add Parent Menu to Html Tag
+            ->setChildAttr(['data-parent' => 'main']); // Add Parent Menu to Html Tag
             
 
         $menu->addChild('Test1',2)
             ->setLabel('Test1')
             ->setRoute('about');
 
-        $menu->addChild("Login / Sign-Up",5)
-                ->setLabel("Login / Signup")
-                ->setRoute("fos_user_security_login")
-                ->setRoles(['IS_AUTHENTICATED_ANONYMOUSLY'])
-                    ->addChild('Login', 6)
-                    ->setLabel('Login')
-                    ->setRoute('fos_user_security_login')
-                    ->setRoles(['IS_AUTHENTICATED_ANONYMOUSLY'])                
-
-                    ->addChildParent('Register', 7)
-                    ->setLabel('Register')
-                    ->setRoute('fos_user_registration_register')
-                    ->setRoles(['IS_AUTHENTICATED_ANONYMOUSLY']);   
-
-        $menu->addChild("User",6)
-                ->setLabel("User")
-                ->setRoute("fos_user_profile_show")
-                ->setRoles(['ROLE_USER'])
-                    ->addChild('Profil', 1)
-                    ->setLabel('Profil')
-                    ->setRoute('fos_user_profile_show')
-                    ->setRoles(['ROLE_USER'])                
-
-                    ->addChildParent('Change Password', 2)
-                    ->setLabel('Change Password')
-                    ->setRoute('fos_user_change_password')
-                    ->setRoles(['ROLE_USER'])   
-
-                    ->addChildParent('Administration', 3)
-                    ->setLabel('Administration')
-                    ->setRoute('easyadmin')
-                    ->setRoles(['ROLE_ADMIN'])   
-
-                    ->addChildParent('Logout', 4)
-                    ->setLabel('Logout')
-                    ->setRoute('fos_user_security_logout')
-                    ->setRoles(['ROLE_USER']);                       
-
-
 
         // Create Menu Items
         $menu->addChild('CHD1', 1)
             ->setLabel('Application')
-            ->setRoute('easyadmin')
+            ->setRoute('about')
+            ->setLinkAttr(['class' => "dropdown-menu dropdown-menu-left"])
             //->setLinkAttr(['class' => 'nav-item'])
-            ->setRoles(['ROLE_USER'])
+            //->setRoles(['ROLE_USER'])
                 // Contact
                 ->addChild('Child1', 5)
                 ->setLabel('Child1')

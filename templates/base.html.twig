@@ -24,9 +24,18 @@
                   <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        {{ pd_menu_render('App\\Menu\\FirstMenu', {
-            
+                        {{ pd_menu_render('App\\Menu\\ApplicationMenu', {
+                            
                         }) }}
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}                    
+                        {{ pd_menu_render('App\\Menu\\UserMenu', {
+                            
+                        }) }}
+                        {% else %}
+                        {{ pd_menu_render('App\\Menu\\NouserMenu', {
+                            
+                        }) }}
+                        {% endif %}
                 </div>
         </nav>
         <!--NAV-->
