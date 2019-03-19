@@ -8,7 +8,7 @@ Dies beinhaltet
 - BootStrap 4 Templates für FOSUserBundle
 - Bootstrap4, JQuery, Propper, Fontsawesome als lokale Version
 
-Bisher ist (ausser die Templates), alles nur zusammen ge-Guttenbergt.
+Bisher ist (ausser die Templates), alles nur zusammen ge-Guttenbergt. (V0.0.1)
 
 
 ## Installation
