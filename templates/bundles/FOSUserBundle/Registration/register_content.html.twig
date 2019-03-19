@@ -1,8 +1,33 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
-    {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+<h2 class="text-center text-white mb-4">{{ 'registration.submit'|trans }}</h2>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+
+                <div class="card rounded-0">
+                        <div class="card-header">
+                                <h3 class="mb-0">{{ 'registration.submit'|trans }}</h3>
+                                
+                        </div>
+                        <div class="card-body">
+                    <!--FormStart-start-->
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    <!--FormStart-widgetstart-->
+                    {{ form_widget(form) }}
+                    <input type="submit" class="form-control" value="{{ 'registration.submit'|trans }}" />
+                    <!--FormStart-end-->
+                    {{ form_end(form) }}
+                        </div>
+                        <div class="card-footer">
+                                <div class="d-flex justify-content-center links">
+                                        <a href="{{ path('main') }}">{{ 'mainpage'|trans }}</a>
+                                </div>
+                        </div>                           
+
+                </div>
+
     </div>
-{{ form_end(form) }}
+
+
+</div>
+<!--/row-->

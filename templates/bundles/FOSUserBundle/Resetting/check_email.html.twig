@@ -3,7 +3,26 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-<p>
-{{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
-</p>
+<h2 class="text-center text-white mb-4">{{ 'resetting.email.subject'|trans }}</h2>
+<div class="row">
+    <div class="col-md-6 mx-auto">
+
+        <!-- form card login -->
+            <div class="card rounded-0">
+                <div class="card-header">
+                    <h3 class="mb-0">{{ 'resetting.email.subject'|trans }}</h3>
+                </div>
+                <div class="card-body">
+                    <p>
+                    {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+                    </p>
+                </div>
+                <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                                <a href="{{ path('main') }}">{{ 'mainpage'|trans }}</a>
+                        </div>
+                </div>                           
+            </div>
+    </div>
+</div>                    
 {% endblock %}
