@@ -8,7 +8,7 @@ Dies beinhaltet
 - BootStrap 4 Templates für FOSUserBundle
 - Bootstrap4, JQuery, Propper, Fontsawesome als lokale Version
 
-Bisher ist (ausser die Templates), alles nur zusammen ge-Guttenbergt. (V0.0.1)
+Bisher ist (ausser die Templates), alles nur zusammen ge-Guttenbergt. (V0.0.3)
 
 
 ## Installation
@@ -28,13 +28,20 @@ Datenbank erstellen
 `cp .env .env.local`
 und mitgültigen Daten füttern (Datenbank und Mailserver)
 
-mysymfony.sql in die Datenbank importieren
-`mysql -uDatenbankNutzer -pPasswort DatenbankName < mysymfony.sql`
+Datenbank-Tabellen erstellen
+`php bin/console doctrine:schema:create`
+
+Benutzer anlegen
+`php bin/console fos:user:create`
+
+Benutzer zum Admin machen
+`php bin/console fos:user:promote`
+und dabei dem eben angelegten Benutzer die Rolle **ROLE_ADMIN** zuweisen
+
+
 
 ## Los geht's ##
-Anmeldung:
-User: **admin**
-Passwort: **password**
+
 
 
 (Würde ich ggf. ändern.)
