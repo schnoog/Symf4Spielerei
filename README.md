@@ -8,6 +8,8 @@ Dies beinhaltet
 - BootStrap 4 Templates für FOSUserBundle
 - Bootstrap4, JQuery, Propper, Fontsawesome als lokale Version
 
+Bisher ist (ausser die Templates), alles nur zusammen ge-Guttenbergt.
+
 
 ## Installation
 
@@ -34,6 +36,6 @@ Anmeldung:
 User: **admin**
 Passwort: **password**
 
-(Würde ich ggf. ändern.)
 
+(Würde ich ggf. ändern.)
 
