@@ -5,17 +5,17 @@
 {% block fos_user_content %}
 
 
-<h2 class="text-center text-white mb-4">{{ 'registration.confirmed'|trans }}</h2>
+<h2 class="text-center text-white mb-4">{{ 'registration.confirmed'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</h2>
 <div class="row">
     <div class="col-md-6 mx-auto">
         <!-- form card login -->
         <div class="card rounded-0">
             <div class="card-header">
-                <h3 class="mb-0">{{ 'registration.confirmed'|trans }}</h3>
+                <h3 class="mb-0">{{ 'registration.confirmed'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</h3>
             </div>
             <div class="card-body">
 
-                            <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
+                            <p>{{ 'registration.confirmed'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</p>
                             {% if targetUrl %}
                             <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
                             {% endif %}

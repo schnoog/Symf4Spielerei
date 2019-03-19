@@ -16,7 +16,7 @@
 {{ form_start(form, { 'action': path('fos_user_resetting_reset', {'token': token}), 'attr': { 'class': 'fos_user_resetting_reset' } }) }}
 {{ form_widget(form) }}
                         <div class="form-group">
-                            <input type="submit" id="_submit" name="_submit" value="{{ 'resetting.reset.submit'|trans }}" class="btn float-right login_btn">
+                            <input type="submit" id="_submit" name="_submit" value="{{ 'resetting.reset.submit'|trans }}" class="btn btn-success float-right login_btn">
                         </div>
 {{ form_end(form) }}
 
