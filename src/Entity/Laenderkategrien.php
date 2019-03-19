@@ -17,12 +17,12 @@ class Laenderkategrien
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=3)
+     * @ORM\Column(type="string", length=3, unique=true)
      */
     private $LaenderkategrieKurz;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $Laenderkategrie;
 

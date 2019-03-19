@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\TypenRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\StatiRepository")
  */
-class Typen
+class Stati
 {
     /**
      * @ORM\Id()
@@ -17,23 +17,23 @@ class Typen
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=25, unique=true)
+     * @ORM\Column(type="string", length=20, unique=true)
      */
-    private $Typ;
+    private $Status;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getTyp(): ?string
+    public function getStatus(): ?string
     {
-        return $this->Typ;
+        return $this->Status;
     }
 
-    public function setTyp(string $Typ): self
+    public function setStatus(string $Status): self
     {
-        $this->Typ = $Typ;
+        $this->Status = $Status;
 
         return $this;
     }
