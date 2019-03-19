@@ -39,7 +39,7 @@ CREATE TABLE `fos_user` (
   UNIQUE KEY `UNIQ_957A647992FC23A8` (`username_canonical`),
   UNIQUE KEY `UNIQ_957A6479A0D96FBF` (`email_canonical`),
   UNIQUE KEY `UNIQ_957A6479C05FB297` (`confirmation_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,32 +48,107 @@ CREATE TABLE `fos_user` (
 
 LOCK TABLES `fos_user` WRITE;
 /*!40000 ALTER TABLE `fos_user` DISABLE KEYS */;
-INSERT INTO `fos_user` VALUES (1,'admin','admin','admin@schnoog.eu','admin@schnoog.eu',1,NULL,'$2y$13$AylzRvaz4Huid1I6eRO1kefS8NSp3/HknGOH5niROmC4Bis9uUB26','2019-03-19 15:35:40',NULL,NULL,'a:1:{i:0;s:10:\"ROLE_ADMIN\";}');
 /*!40000 ALTER TABLE `fos_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `migration_versions`
+-- Table structure for table `laender`
 --
 
-DROP TABLE IF EXISTS `migration_versions`;
+DROP TABLE IF EXISTS `laender`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `migration_versions` (
-  `version` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `executed_at` datetime NOT NULL COMMENT '(DC2Type:datetime_immutable)',
-  PRIMARY KEY (`version`)
+CREATE TABLE `laender` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `land_kurz` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `land` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `allowed` tinyint(1) NOT NULL,
+  `aktiv_ab_saison` int(11) NOT NULL,
+  `aktiv_bis_saison` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `migration_versions`
+-- Dumping data for table `laender`
 --
 
-LOCK TABLES `migration_versions` WRITE;
-/*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20190317145836','2019-03-17 14:59:00');
-/*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
+LOCK TABLES `laender` WRITE;
+/*!40000 ALTER TABLE `laender` DISABLE KEYS */;
+/*!40000 ALTER TABLE `laender` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `laenderkategrien`
+--
+
+DROP TABLE IF EXISTS `laenderkategrien`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `laenderkategrien` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `laenderkategrie_kurz` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `laenderkategrie` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `laenderkategrien`
+--
+
+LOCK TABLES `laenderkategrien` WRITE;
+/*!40000 ALTER TABLE `laenderkategrien` DISABLE KEYS */;
+/*!40000 ALTER TABLE `laenderkategrien` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `regionen`
+--
+
+DROP TABLE IF EXISTS `regionen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `regionen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `land_id` int(11) NOT NULL,
+  `region` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_4086D2DA1994904A` (`land_id`),
+  CONSTRAINT `FK_4086D2DA1994904A` FOREIGN KEY (`land_id`) REFERENCES `laender` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `regionen`
+--
+
+LOCK TABLES `regionen` WRITE;
+/*!40000 ALTER TABLE `regionen` DISABLE KEYS */;
+/*!40000 ALTER TABLE `regionen` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `typen`
+--
+
+DROP TABLE IF EXISTS `typen`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `typen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `typ` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `typen`
+--
+
+LOCK TABLES `typen` WRITE;
+/*!40000 ALTER TABLE `typen` DISABLE KEYS */;
+/*!40000 ALTER TABLE `typen` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -85,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-19 15:47:17
+-- Dump completed on 2019-03-19 20:52:41
