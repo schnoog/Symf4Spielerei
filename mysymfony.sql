@@ -48,7 +48,7 @@ CREATE TABLE `fos_user` (
 
 LOCK TABLES `fos_user` WRITE;
 /*!40000 ALTER TABLE `fos_user` DISABLE KEYS */;
-INSERT INTO `fos_user` VALUES (1,'schnoog','schnoog','schnoog@schnoog.eu','schnoog@schnoog.eu',1,NULL,'$2y$13$URQRiJQXdRhxHee1dDOq3ObyyZgvbhD5t//do8bA2BKCBtgJv4z.u','2019-03-19 14:49:17',NULL,NULL,'a:1:{i:0;s:10:\"ROLE_ADMIN\";}');
+INSERT INTO `fos_user` VALUES (1,'admin','admin','admin@schnoog.eu','admin@schnoog.eu',1,NULL,'$2y$13$AylzRvaz4Huid1I6eRO1kefS8NSp3/HknGOH5niROmC4Bis9uUB26','2019-03-19 15:35:40',NULL,NULL,'a:1:{i:0;s:10:\"ROLE_ADMIN\";}');
 /*!40000 ALTER TABLE `fos_user` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,4 +85,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-19 15:20:22
+-- Dump completed on 2019-03-19 15:39:04
