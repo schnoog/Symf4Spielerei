@@ -8,12 +8,9 @@
         <meta name="author" content="">
 
         <title>{% block title %}Welcome!{% endblock %}</title>
-       
-        <link href="{{ asset('/myassetts/bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
-        
-        <link href="{{ asset('/myassetts/fontawesome/css/all.css') }}" type="text/css" rel="stylesheet" />
-
-        <link href="{{ asset('/myassetts/css/custom.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/myassets/bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/myassets/fontawesome/css/all.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('/myassets/css/custom.css') }}" type="text/css" rel="stylesheet" />
         {% block stylesheets %}
         {% endblock %}
 
@@ -43,11 +40,20 @@
         </nav>
         <!--NAV-->
         {% endblock %}
-        {% block body %}{% endblock %}
-        {% block content %}{% endblock %}
-        <script src="{{ asset('/myassetts/jquery/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ asset('/myassetts/popper/popper.min.js') }}" ></script>
-        <script src="{{ asset('/myassetts/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>           
+        
+        {% block content %} {# block content -> von FOSUserBundle --- wenn dieses leer ist wird das dazwischen geparst#}
+        {# Haupt-Content Block #}<!--Content-->
+            <div class="container-fluid">
+                    <div class="row">
+                    {% block body %}
+                    {% endblock %}
+                    </div>
+            </div>
+        {# Ende des Haupt-Content-Blocks #}<!--Content-End-->
+        {% endblock %}
+        <script src="{{ asset('/myassets/jquery/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ asset('/myassets/popper/popper.min.js') }}" ></script>
+        <script src="{{ asset('/myassets/bootstrap/js/bootstrap.bundle.min.js') }}" ></script>           
         {% block javascripts %}
         {% endblock %}
     </body>
