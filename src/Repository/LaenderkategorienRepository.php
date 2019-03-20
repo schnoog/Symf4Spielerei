@@ -2,25 +2,25 @@
 
 namespace App\Repository;
 
-use App\Entity\Laenderkategrien;
+use App\Entity\Laenderkategorien;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Laenderkategrien|null find($id, $lockMode = null, $lockVersion = null)
- * @method Laenderkategrien|null findOneBy(array $criteria, array $orderBy = null)
- * @method Laenderkategrien[]    findAll()
- * @method Laenderkategrien[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Laenderkategorien|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Laenderkategorien|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Laenderkategorien[]    findAll()
+ * @method Laenderkategorien[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class LaenderkategrienRepository extends ServiceEntityRepository
+class LaenderkategorienRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Laenderkategrien::class);
+        parent::__construct($registry, Laenderkategorien::class);
     }
 
     // /**
-    //  * @return Laenderkategrien[] Returns an array of Laenderkategrien objects
+    //  * @return Laenderkategorien[] Returns an array of Laenderkategorien objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class LaenderkategrienRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Laenderkategrien
+    public function findOneBySomeField($value): ?Laenderkategorien
     {
         return $this->createQueryBuilder('l')
             ->andWhere('l.exampleField = :val')

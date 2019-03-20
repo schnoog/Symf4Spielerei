@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LaenderkategrienRepository")
  */
-class Laenderkategrien
+class Laenderkategorien
 {
     /**
      * @ORM\Id()
@@ -19,38 +19,38 @@ class Laenderkategrien
     /**
      * @ORM\Column(type="string", length=3, unique=true)
      */
-    private $LaenderkategrieKurz;
+    private $LaenderkategorieKurz;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
-    private $Laenderkategrie;
+    private $Laenderkategorie;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getLaenderkategrieKurz(): ?string
+    public function getLaenderkategorieKurz(): ?string
     {
-        return $this->LaenderkategrieKurz;
+        return $this->LaenderkategorieKurz;
     }
 
-    public function setLaenderkategrieKurz(string $LaenderkategrieKurz): self
+    public function setLaenderkategorieKurz(string $LaenderkategorieKurz): self
     {
-        $this->LaenderkategrieKurz = $LaenderkategrieKurz;
+        $this->LaenderkategorieKurz = $LaenderkategorieKurz;
 
         return $this;
     }
 
-    public function getLaenderkategrie(): ?string
+    public function getLaenderkategorie(): ?string
     {
-        return $this->Laenderkategrie;
+        return $this->Laenderkategorie;
     }
 
-    public function setLaenderkategrie(string $Laenderkategrie): self
+    public function setLaenderkategorie(string $Laenderkategorie): self
     {
-        $this->Laenderkategrie = $Laenderkategrie;
+        $this->Laenderkategorie = $Laenderkategorie;
 
         return $this;
     }

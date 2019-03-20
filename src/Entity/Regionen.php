@@ -5,54 +5,38 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\RegionenRepository")
+ * Regionen
+ *
+ * @ORM\Table(name="regionen", uniqueConstraints={@ORM\UniqueConstraint(name="UniqueCountryRegion", columns={"land_id", "region"})}, indexes={@ORM\Index(name="IDX_4086D2DA1994904A", columns={"land_id"})})
+ * @ORM\Entity
  */
 class Regionen
 {
     /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Laender", inversedBy="regionen")
-     * @ORM\JoinColumn(nullable=false)
+     * @var string
+     *
+     * @ORM\Column(name="region", type="string", length=255, nullable=false)
      */
-    private $Land;
+    private $region;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @var \Laender
+     *
+     * @ORM\ManyToOne(targetEntity="Laender")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="land_id", referencedColumnName="id")
+     * })
      */
-    private $Region;
+    private $land;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
-    public function getLand(): ?Laender
-    {
-        return $this->Land;
-    }
-
-    public function setLand(?Laender $Land): self
-    {
-        $this->Land = $Land;
-
-        return $this;
-    }
-
-    public function getRegion(): ?string
-    {
-        return $this->Region;
-    }
-
-    public function setRegion(string $Region): self
-    {
-        $this->Region = $Region;
-
-        return $this;
-    }
 }

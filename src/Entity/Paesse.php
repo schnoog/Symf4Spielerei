@@ -36,7 +36,7 @@ class Paesse
     private $LandesRegion;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $Hoehe;
 
@@ -47,8 +47,7 @@ class Paesse
     private $Kategorie;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Ausbauarten")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $Ausbauart;
 
@@ -74,7 +73,7 @@ class Paesse
     private $VonOrt;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $VonHoehe;
 
@@ -84,7 +83,7 @@ class Paesse
     private $VonRichtung;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", scale=1 , precision=4, nullable=true)
      */
     private $VonDistanz;
 
@@ -99,7 +98,7 @@ class Paesse
     private $NachOrt;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="integer")
      */
     private $NachHoehe;
 
@@ -109,7 +108,7 @@ class Paesse
     private $NachRichtung;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
+     * @ORM\Column(type="decimal", scale=1 , precision=4, nullable=true)
      */
     private $NachDistanz;
 
@@ -155,17 +154,17 @@ class Paesse
     private $Fototip;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", scale=8 , precision=11)
      */
     private $GeoLat;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="decimal", scale=8 , precision=11)
      */
     private $GeoLon;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Laenderkategrien")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Laenderkategorien")
      */
     private $Laenderkategorie;
 
@@ -550,12 +549,12 @@ class Paesse
         return $this;
     }
 
-    public function getLaenderkategorie(): ?Laenderkategrien
+    public function getLaenderkategorie(): ?Laenderkategorien
     {
         return $this->Laenderkategorie;
     }
 
-    public function setLaenderkategorie(?Laenderkategrien $Laenderkategorie): self
+    public function setLaenderkategorie(?Laenderkategorien $Laenderkategorie): self
     {
         $this->Laenderkategorie = $Laenderkategorie;
 
