@@ -135,17 +135,17 @@ class Paesse
     private $Wintersperre;
 
     /**
-     * @ORM\Column(type="string", length=2048, nullable=true)
+     * @ORM\Column(type="text", length=2048, nullable=true)
      */
     private $Maut;
 
     /**
-     * @ORM\Column(type="string", length=9192, nullable=true)
+     * @ORM\Column(type="text", length=9192, nullable=true)
      */
     private $Besonderes;
 
     /**
-     * @ORM\Column(type="string", length=9192, nullable=true)
+     * @ORM\Column(type="text", length=9192, nullable=true)
      */
     private $Sehenswuerdigkeit;
 
