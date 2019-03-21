@@ -5,7 +5,7 @@ IFS="
 
 if [ "$1" == "" ]
 then
-echo "Datenbanktabellen (ausser fos_user wirklich löschen? j/y/J/Y" read anlegen
+echo "Datenbanktabellen (ausser fos_user) wirklich löschen? j/y/J/Y"
 read anlegen
 else
 anlegen="$1"

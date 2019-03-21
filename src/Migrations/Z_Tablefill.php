@@ -24,15 +24,15 @@ final class Z_Tablefill extends AbstractMigration
 ---Fahrbahnbreiten
 ---Icons
 ---Kategorien
+---Laenderkategorien
 Laender
-Laenderkategrien
 Paesse
 Regionen
 ---Richtungen
-Schwierigkeiten
-Stati
+---Schwierigkeiten
+---Stati
 ---Typen
-Wintersperren
+---Wintersperren
 
  */
 
@@ -46,10 +46,23 @@ Wintersperren
         $SD['fahrbahnbreiten']['field'] = 'fahrbahnbreite';
         $SD['fahrbahnbreiten']['data']= array('2-3m','2-4m','2-5m','2-6m','2-7m','2m','3-4m','3-5m','3-6m','3-7m','3-8m','3m','4-5m','4-6m','4-7m','4m','5-6m','5-7m','5-8m','5m','6-7m','6-8m','6m','7-8m','7m','8m(und breiter)');
 
+        $SD['stati']['field'] = 'status';
+        $SD['stati']['data'] = array("aktiv", "inaktiv", "vorbereitet");
+
+        $SD['wintersperren']['field'] = 'wintersperre';
+        $SD['wintersperren']['data'] = array('kein Winterdienst','reduzierter Winterdienst','Tageweise nach Schneefall','Erster Schneefall - V','IX - V','IX-V','IX - VI','IX - VII','XI - I','X - II','XII - I','XI - II','X - III','XII - II','XI - III','XII - III','XII - IV','XII - V','XI - IV','XII - VI','XI -V','XI - V','X - IV','XI - VI','XI - V Nachtfahrverbot','X - V','X - VI','X - VII');
+
         $MD['richtungen'][0]['field'] = 'richtung_kurz';
         $MD['richtungen'][0]['data'] = array ('N','NO','O','SO','S','SW','W','NW');
         $MD['richtungen'][1]['field'] = 'richtung';
         $MD['richtungen'][1]['data'] = array ('Nord','Nordost','Ost','Südost','Süd','Südwest','West','Nordwest');
+
+        $MD['laenderkategorien'][0]['field'] = 'laenderkategorie_kurz';
+        $MD['laenderkategorien'][0]['data']  = array("DEU","FRA","ITA","AUT","CHE","SVN","SIC","SVK","ROM","MNE","BIH","NOR","ESP","HRV","COR",'ISL','FRO','POL','LUX','GRC','GBR','BEL','CZE',"XXX");
+        $MD['laenderkategorien'][1]['field'] = 'laenderkategorie';
+        $MD['laenderkategorien'][1]['data']  = array('Deutschland','Frankreich - France','Italien - Italia','Österreich','Schweiz - Suisse - Svizzera - Svizra','Slowenien - Slovenjia','Sizilien - Sicilia','Slowakei - Slovakia','Rümänien - Romania','Montenegro','Bosnien und Herzegowina - Bosne i Hercegovine','Norwegen - Norge','Spanien - Espagna','Kroatien - Croatia - Hrvatska','Korsika - Corse','Island - Ísland','Färöer - Føroyar','Polen - Polska','Luxemburg - Lëtzebuerg','Griechenland - Elláda','Vereinigtes Königreich - United Kingdom','Belgien - België','Tschechien - Česká','Heavy Offroad');
+
+        
 
         $MD['icons'][0]['field'] = 'icon';
         $MD['icons'][0]['data'] = array ('Bett','Bodenwellen','Kaffee','Schotter','Eng','Essen','Fahrzeiten','Gefährlich','Kurvenreich','Maut','Regeln','Sackgasse','Schwierig','Spezial','Splitter','Steigung','Steil','Steinschlag','Tunnel','Verbot','Vieh','Aussichtpunkt','Wintersperre','Zoll');
@@ -60,6 +73,31 @@ Wintersperren
         $MD['schwierigkeiten'][0]['data'] = array ('1','2','3','4','5');
         $MD['schwierigkeiten'][1]['field'] = 'schwierigkeitsgrad';
         $MD['schwierigkeiten'][1]['data'] = array ('SG 1:Sehr leicht zu befahrende Bergstrecke, auch für Anfänger.','SG 2:Strecke ohne nennenswerte Anforderungen, auch von vorwiegend Bergungewohnten leicht zu befahren.','SG 3:Strecke erfordert Praxis und sichere Fahrtechnik auf Bergstraßen.','SG 4:Auch für Berggewohnte schwierige Strecke, erfordert ein weit über den Durchschnitt herausragendes fahrerisches Können.','SG 5:Sehr schwierige und gefährliche Strecke, Benutzung auf eigene Gefahr!');        
+
+
+
+        $MD['laender'][0]['field'] = 'id';
+        $MD['laender'][0]['data'] = array('1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27','28','29','30','31','32','33','34','35','36','37','38','39','40','41','42','43','44');
+        $MD['laender'][1]['field'] = 'land_kurz';
+        $MD['laender'][1]['data'] = array ('ALB','AND','AUT','BEL','BGR','BIH','CHE','CYP','CZE','DEU','DNK','ESP','EST','FIN','FRA','GBR','GRC','HRV','HUN','IRL','ISL','ITA','LIE','LTU','LUX','LVA','MKD','MAR','MNE','NLD','NOR','POL','PRT','ROM','SMR','KOS','SRB','SVK','SVN','SWE','TUR','RUS','PPP','FRO');
+        $MD['laender'][2]['field'] = 'land';
+        $MD['laender'][2]['data'] = array ('Albania - Shqipëria','Andorra','Österreich','België - Belgique','Bulgaria - Bǎlgarija','Bosne i Hercegovine','Schweiz - Suisse - Svizzera','Cyprus','Ceská republika','Deutschland','Denmark','España','Eesti','Finland - Suomi','France','United Kingdom','Greece - Elláda','Croatia - Hrvatska','Hungary - Magyarország','Ireland - Éire','Island','Italia','Liechtenstein','Lietuva','Luxembourg - Lëtzebuerg','Latvija','Macedonia','Maroc - Al-maghrib','Montenegro','Netherlands','Norway','Poland','Portugal','Romania','San Marino','Kosovo','Serbia','Slovakia','Slovenia','Sweden','Türkiye','Rossijskaja Federazija','passknacker.com','Faröer-Inseln - Føroyar');
+        $MD['laender'][3]['field'] = 'allowed';
+        $MD['laender'][3]['data'] = array('1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1','1');
+        $MD['laender'][4]['field'] = 'aktiv_ab_saison';
+        $MD['laender'][4]['data'] = array('2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013','2013');
+        $MD['laender'][5]['field'] = 'aktiv_bis_saison';
+        $MD['laender'][5]['data'] = array('2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099','2099');
+
+
+
+
+
+
+
+
+
+
 
         //---------------------------------
         foreach( $MD as $tablename => $tableset){
