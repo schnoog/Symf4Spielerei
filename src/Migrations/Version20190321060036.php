@@ -50,7 +50,7 @@ Regionen
         $SD['stati']['data'] = array("aktiv", "inaktiv", "vorbereitet");
 
         $SD['wintersperren']['field'] = 'wintersperre';
-        $SD['wintersperren']['data'] = array('kein Winterdienst','reduzierter Winterdienst','Tageweise nach Schneefall','Erster Schneefall - V','IX - V','IX-V','IX - VI','IX - VII','XI - I','X - II','XII - I','XI - II','X - III','XII - II','XI - III','XII - III','XII - IV','XII - V','XI - IV','XII - VI','XI -V','XI - V','X - IV','XI - VI','XI - V Nachtfahrverbot','X - V','X - VI','X - VII');
+        $SD['wintersperren']['data'] = array('eingeschränkter Winterdienst','kein Winterdienst','reduzierter Winterdienst','Tageweise nach Schneefall','Erster Schneefall - V','IX - V','IX-V','IX - VI','IX - VII','XI - I','X - II','XII - I','XI - II','X - III','XII - II','XI - III','XII - III','XII - IV','XII - V','XI - IV','XII - VI','XI -V','XI - V','X - IV','XI - VI','XI - V Nachtfahrverbot','X - V','X - VI','X - VII');
 
         $MD['richtungen'][0]['field'] = 'richtung_kurz';
         $MD['richtungen'][0]['data'] = array ('N','NO','O','SO','S','SW','W','NW');

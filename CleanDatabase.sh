@@ -15,7 +15,7 @@ if [ $(echo 'y/Y/j/J' | grep "$anlegen" | wc -l) -gt 0 ]
 then
 ###DATEN BANK BEREINIGEN
 echo 'SET FOREIGN_KEY_CHECKS = 0;' > DropStatements.sql
-mysqldump -uroot --add-drop-table --no-data mysymfony | grep ^DROP | grep -v 'fos_user' >> DropStatements.sql
+mysqldump -uroot --add-drop-table --no-data mysymfony | grep ^DROP | grep -v 'paesseold' | grep -v 'fos_user' >> DropStatements.sql
 echo 'SET FOREIGN_KEY_CHECKS = 1;' >> DropStatements.sql
 bash -c "cat DropStatements.sql | mysql -uroot mysymfony"
 rm DropStatements.sql
