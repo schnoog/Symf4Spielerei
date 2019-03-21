@@ -19,7 +19,7 @@ class Belaege
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=40, unique=true)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $Belag;
 

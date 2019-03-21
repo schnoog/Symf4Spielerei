@@ -18,3 +18,6 @@
 ###< symfony/web-server-bundle ###
 mysymfony.sql
 mysymfony*.sql
+public/WorkDir/inc/dbconf.php
+
+ZZZ_HolePaesseoldUndNations.sh*

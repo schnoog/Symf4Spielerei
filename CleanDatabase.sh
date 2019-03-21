@@ -15,7 +15,7 @@ if [ $(echo 'y/Y/j/J' | grep "$anlegen" | wc -l) -gt 0 ]
 then
 ###DATEN BANK BEREINIGEN
 echo 'SET FOREIGN_KEY_CHECKS = 0;' > DropStatements.sql
-mysqldump -uroot --add-drop-table --no-data mysymfony | grep ^DROP | grep -v 'paesseold' | grep -v 'fos_user' >> DropStatements.sql
+mysqldump -uroot --add-drop-table --no-data mysymfony | grep ^DROP | grep -v 'paesse_conv' | grep -v 'nations' | grep -v 'paesseold' | grep -v 'fos_user' >> DropStatements.sql
 echo 'SET FOREIGN_KEY_CHECKS = 1;' >> DropStatements.sql
 bash -c "cat DropStatements.sql | mysql -uroot mysymfony"
 rm DropStatements.sql
@@ -41,4 +41,17 @@ read migratedo
 	
 #php bin/console make:migration && php bin/console doctrine:migrations:migrate
 fi
+
+echo "Sollen paesse und nations frisch von passknacker eingespielt werden? j/y/J/Y"
+read migratepk
+	if [ $(echo 'y/Y/j/J' | grep "$migratepk" | wc -l) -gt 0 ]
+	then
+		echo "Spiele Migrationen mit 'php bin/console doctrine:migrations:migrate'"
+		./ZZZ_HolePaesseoldUndNations.sh
+	fi
+	
+#php bin/console make:migration && php bin/console doctrine:migrations:migrate
+fi
+
+
 IFS=$MYIFS

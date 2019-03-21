@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190321055847 extends AbstractMigration
+final class Version20190321121256 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20190321055847 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('CREATE TABLE belaege (id INT AUTO_INCREMENT NOT NULL, belag VARCHAR(40) NOT NULL, UNIQUE INDEX UNIQ_5F5C770DC7D54858 (belag), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE belaege (id INT AUTO_INCREMENT NOT NULL, belag VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_5F5C770DC7D54858 (belag), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE fahrbahnbreiten (id INT AUTO_INCREMENT NOT NULL, fahrbahnbreite VARCHAR(20) NOT NULL, UNIQUE INDEX UNIQ_824499F04307411E (fahrbahnbreite), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE icons (id INT AUTO_INCREMENT NOT NULL, icon VARCHAR(40) NOT NULL, icon_bild_ident VARCHAR(50) NOT NULL, UNIQUE INDEX UNIQ_A6A507E659429DB (icon), UNIQUE INDEX UNIQ_A6A507EF25E693B (icon_bild_ident), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE kategorien (id INT AUTO_INCREMENT NOT NULL, kategorie VARCHAR(20) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
@@ -52,6 +52,7 @@ final class Version20190321055847 extends AbstractMigration
         $this->addSql('ALTER TABLE paesse_icons ADD CONSTRAINT FK_FAE4D6377559EA7F FOREIGN KEY (paesse_id) REFERENCES paesse (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE paesse_icons ADD CONSTRAINT FK_FAE4D6372FF25572 FOREIGN KEY (icons_id) REFERENCES icons (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE regionen ADD CONSTRAINT FK_4086D2DA1994904A FOREIGN KEY (land_id) REFERENCES laender (id)');
+        $this->addSql('DROP TABLE paesse_conv');
         $this->addSql('ALTER TABLE fos_user CHANGE salt salt VARCHAR(255) DEFAULT NULL, CHANGE last_login last_login DATETIME DEFAULT NULL, CHANGE confirmation_token confirmation_token VARCHAR(180) DEFAULT NULL, CHANGE password_requested_at password_requested_at DATETIME DEFAULT NULL');
     }
 
@@ -75,6 +76,7 @@ final class Version20190321055847 extends AbstractMigration
         $this->addSql('ALTER TABLE paesse DROP FOREIGN KEY FK_7D379C456BF700BD');
         $this->addSql('ALTER TABLE paesse DROP FOREIGN KEY FK_7D379C45278CD074');
         $this->addSql('ALTER TABLE paesse DROP FOREIGN KEY FK_7D379C458493AC36');
+        $this->addSql('CREATE TABLE paesse_conv (id INT DEFAULT NULL, paesse_nr INT NOT NULL, done INT DEFAULT 0 NOT NULL, problem INT DEFAULT 0 NOT NULL, problemfield TEXT NOT NULL COLLATE utf8mb4_general_ci, UNIQUE INDEX pid (paesse_nr)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB COMMENT = \'\' ');
         $this->addSql('DROP TABLE belaege');
         $this->addSql('DROP TABLE fahrbahnbreiten');
         $this->addSql('DROP TABLE icons');
