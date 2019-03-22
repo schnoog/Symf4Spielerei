@@ -1,0 +1,10 @@
+<?php
+
+$dbuser="username";
+$dbpass="password";
+$dbname="databasename";
+$dbhost="localhost";
+$dbport=3306;
+$dbenc="utf8mb4";
+
+

@@ -1,0 +1,20 @@
+
+
+Leere Migration erstellen
+
+php bin/console doctrine:migrations:generate
+
+
+Migration erstellen
+php bin/console make:migration
+
+
+Migrationen aufspielen
+php bin/console doctrine:migrations:migrate
+
+
+
+
+Enities importieren.
+php bin/console doctrine:mapping:import "App\Entity" annotation --path=src/Entity
+
