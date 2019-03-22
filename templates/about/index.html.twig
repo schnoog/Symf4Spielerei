@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% trans_default_domain 'FOSUserBundle' %}
 {% block title %}Hello AboutController!{% endblock %}
 
 {% block body %}
@@ -12,6 +12,7 @@
                 <p class="card-text">
                         This friendly message is coming from:
                         <ul>
+                                {{ 'profile.edit.submit'|trans }}
                             <li>Your controller at <code><a href="{{ 'C:/phpDEV/mysymfony/src/Controller/AboutController.php'|file_link(0) }}">src/Controller/AboutController.php</a></code></li>
                             <li>Your template at <code><a href="{{ 'C:/phpDEV/mysymfony/templates/about/index.html.twig'|file_link(0) }}">templates/about/index.html.twig</a></code></li>
                         </ul>

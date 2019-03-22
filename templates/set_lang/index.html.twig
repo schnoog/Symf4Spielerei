@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Hello SetLangController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Hello {{ controller_name }}! âœ…</h1>
+    <h1>Übersetzungstest:  {{ 'security.login.username'|trans }}  </h1>
+    
+     {{ dump | raw }}
+    {% if changed == true %}
+     <script type="text/javascript">
+        window.location = "{{ url('set_lang') }}";
+    </script>
+    {% else %}
+        <br /><a href="{{ url('set_lang') }}/de">Deutsch</a>
+        <br /><a href="{{ url('set_lang') }}/en">English</a>
+        <br /><a href="{{ url('set_lang') }}/fr">French</a>        
+    {% endif %}
+
+</div>
+{% endblock %}
