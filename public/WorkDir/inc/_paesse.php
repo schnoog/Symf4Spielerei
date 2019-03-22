@@ -77,7 +77,7 @@ function ParsePass($pass,&$errfield,$isdebug=true){
 
 //    DB::insertIgnore('paesse',$ps);
     $myid = DB::queryFirstField("Select id from paesse WHERE alte_id = %i",$pass['paesse_nr']);
-    if($myid < 0){
+    if($myid > 0){
         $iconstring= $pass['paesse_icons'];
         $icons = explode(";",$iconstring);
         for($x=0;$x<count($icons);$x++){
@@ -114,8 +114,8 @@ function my_error_handler($params) {
  *  
  */
 function ParsePasses($isdebug = false){
-$DEBUGCOUNTER=999999;
-$DEBUGBREAK=1;    
+$DEBUGCOUNTER=0;
+$DEBUGBREAK=8;    
     global $devid;
     fFillLUDs();
     if ($devid < 1){
@@ -134,7 +134,7 @@ $DEBUGBREAK=1;
             $DEBUGCOUNTER++;
 
             $PID = fGetNextPass();
-if($DEBUGCOUNTER == $DEBUGBREAK) $PID = array();
+//if($DEBUGCOUNTER > $DEBUGBREAK) break;
         }
     set_time_limit(300);    
     }else{
