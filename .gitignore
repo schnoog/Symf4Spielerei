@@ -16,8 +16,7 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
-mysymfony.sql
-mysymfony*.sql
+
 public/WorkDir/inc/dbconf.php
 
-ZZZ_HolePaesseoldUndNations.sh*
+*.sql

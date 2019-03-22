@@ -5,13 +5,15 @@ use Symfony\Component\Debug\Debug;
 error_reporting(E_ALL);
 
 function ClearLaenderUndRegionen(){
+    DB::query("Delete from paesse_icons");
+    DB::query("Delete from paesse WHERE id > 0");
     DB::query("Delete from regionen WHERE id > 0");
     DB::query("Delete from laender WHERE id > 0");
 }
 
 
 function prepareLaenderUndRegionen($isdebug = false){
-    //ClearLaenderUndRegionen();
+    ClearLaenderUndRegionen();
     $sql = "Select distinct nations_landcode, nations_land from nations";
     $res = DB::query($sql);
 
@@ -42,7 +44,7 @@ function prepareLaenderUndRegionen($isdebug = false){
 
 }
 function prepareRegionen($landid, $land){
-    if($land == 'FRA'){
+    if($land == 'FRA' ){
         $sql = "select distinct nations_kanton as reg , nations_kantoncode  as regcode from nations WHERE nations_landcode LIKE %s";
     }else{
         $sql = "select distinct nations_region as reg , nations_regioncode  as regcode from nations WHERE nations_landcode LIKE %s";

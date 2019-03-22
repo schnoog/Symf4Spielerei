@@ -19,7 +19,7 @@ class Paesse
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=false)
      */
     private $Name;
 
@@ -30,13 +30,21 @@ class Paesse
     private $Typ;
 
     /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $Land;
+    /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $Lk;
+    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Regionen")
      * @ORM\JoinColumn(nullable=false)
      */
     private $LandesRegion;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", unique=false)
      */
     private $Hoehe;
 
@@ -47,13 +55,16 @@ class Paesse
     private $Kategorie;
 
     /**
-     * @ORM\Column(type="string", length=255, unique=true)
+     * @ORM\Column(type="string", length=255, unique=false, nullable=true)
      */
     private $Ausbauart;
 
+
+
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Belaege", inversedBy="passbelaege")
-     */
+     * @ORM\ManyToOne(targetEntity="App\Entity\Belaege")
+     * @ORM\JoinColumn(nullable=true)
+     */    
     private $Belag;
 
     /**
@@ -68,12 +79,12 @@ class Paesse
     private $Status;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, unique=false)
      */
     private $VonOrt;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true, unique=false)
      */
     private $VonHoehe;
 
@@ -83,22 +94,22 @@ class Paesse
     private $VonRichtung;
 
     /**
-     * @ORM\Column(type="decimal", scale=1 , precision=4, nullable=true)
+     * @ORM\Column(type="decimal", scale=1 , precision=4, nullable=true, unique=false)
      */
     private $VonDistanz;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", unique=false)
      */
-    private $VonKehren;
+    private $Kehren;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, unique=false)
      */
     private $NachOrt;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", nullable=true, unique=false)
      */
     private $NachHoehe;
 
@@ -108,14 +119,9 @@ class Paesse
     private $NachRichtung;
 
     /**
-     * @ORM\Column(type="decimal", scale=1 , precision=4, nullable=true)
+     * @ORM\Column(type="decimal", scale=1 , precision=4, nullable=true, unique=false)
      */
     private $NachDistanz;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $NachKehren;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Schwierigkeiten")
@@ -134,32 +140,32 @@ class Paesse
     private $Wintersperre;
 
     /**
-     * @ORM\Column(type="text", length=2048, nullable=true)
+     * @ORM\Column(type="text", length=2048, nullable=true, unique=false)
      */
     private $Maut;
 
     /**
-     * @ORM\Column(type="text", length=9192, nullable=true)
+     * @ORM\Column(type="text", length=9192, nullable=true, unique=false)
      */
     private $Besonderes;
 
     /**
-     * @ORM\Column(type="text", length=9192, nullable=true)
+     * @ORM\Column(type="text", length=9192, nullable=true, unique=false)
      */
     private $Sehenswuerdigkeit;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true, unique=false)
      */
     private $Fototip;
 
     /**
-     * @ORM\Column(type="decimal", scale=8 , precision=11)
+     * @ORM\Column(type="decimal", scale=8 , precision=11, unique=false)
      */
     private $GeoLat;
 
     /**
-     * @ORM\Column(type="decimal", scale=8 , precision=11)
+     * @ORM\Column(type="decimal", scale=8 , precision=11, unique=false)
      */
     private $GeoLon;
 
