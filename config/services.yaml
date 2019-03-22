@@ -30,11 +30,6 @@ services:
 #        tags:
 #            - { name: kernel.event_listener, event: settings_menu.event, method: onCreate }        
 
-    App\Menu\ApplicationMenu:
-        public: true
-    App\Menu\UserMenu:
-        public: true                    
-    App\Menu\NouserMenu:
-        public: true 
+
         # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
