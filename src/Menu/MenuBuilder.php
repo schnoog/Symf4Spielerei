@@ -51,9 +51,9 @@ class MenuBuilder
                             ],
                         ]
                     );
-if($loggedin){
+
                                 $dropdown = $menu->addChild(
-                                    'Hello Me' . $subs,
+                                    'Application-Menu' . $subs,
                                     [
                                         'attributes' => [
                                             'dropdown' => true,
@@ -62,9 +62,9 @@ if($loggedin){
                                 );
 
                                 $dropdown->addChild(
-                                    'Profile',
+                                    'Level1',
                                     [
-                                        'route' => 'fos_user_profile_show',
+                                        'route' => 'main',
                                         'attributes' => [
                                             'divider_append' => true,
                                         ],
@@ -72,7 +72,7 @@ if($loggedin){
                                 );
 
                                 $dropdown->addChild(
-                                    'text',
+                                    'Text only',
                                     [
                                         'attributes' => [
                                             'icon' => 'fa fa-user-circle',
@@ -84,63 +84,16 @@ if($loggedin){
                                 );
 
                                 $dropdown->addChild(
-                                    'Logout',
+                                    'Level 2',
                                     [
-                                        'route' => 'fos_user_security_logout',
+                                        //'route' => 'fos_user_registration_register',
+                                        'uri' => 'http://idiotenpara.de',
                                         'attributes' => [
                                             'divider_prepend' => true,
                                             'icon' => 'fa fa-sign-out',
                                         ],
                                     ]
                                 );
-}else{
-                                $dropdown = $menu->addChild(
-                                    'Hello Guest' . $subs,
-                                    [
-                                        'attributes' => [
-                                            'dropdown' => true,
-                                        ],
-                                    ]
-                                );
-
-                                $dropdown->addChild(
-                                    'Login',
-                                    [
-                                        'route' => 'fos_user_security_login',
-                                        'attributes' => [
-                                            'divider_append' => true,
-                                        ],
-                                    ]
-                                );
-
-                                $dropdown->addChild(
-                                    'New here?',
-                                    [
-                                        'attributes' => [
-                                            'icon' => 'fa fa-user-circle',
-                                        ],
-                                        'labelAttributes' => [
-                                            'class' => ['class1', 'class2'],
-                                        ],
-                                    ]
-                                );
-
-                                $dropdown->addChild(
-                                    'Register',
-                                    [
-                                        'route' => 'fos_user_registration_register',
-                                        'attributes' => [
-                                            'divider_prepend' => true,
-                                            'icon' => 'fa fa-sign-out',
-                                        ],
-                                    ]
-                                );
-
-
-
-}
-
-///////////////////////////
         return $menu;
     }
 /////--- createMainMenu
@@ -162,20 +115,16 @@ public function createUserMenu(RequestStack $requestStack)
     }
 
     $menu = $this->factory->createItem('root');
-    //$menu->setExtra('class',"navbar-nav");
-    $menu->setChildrenAttribute('class', 'navbar-nav ml-auto');
-
-    //$tmp = $this->get('security.context')->getToken()->getUser();
-
-                $menu->addChild(
-                    'texting',
-                    [
-                        'labelAttributes' => [
-                            'class' => 'class3 class4',
-                        ],
-                    ]
-                );
-if($loggedin){
+    $menu->setChildrenAttribute('class', 'navbar-nav ml-auto ');
+                    $menu->addChild(
+                        'texting',
+                        [
+                            'labelAttributes' => [
+                                'class' => 'class3 class4',
+                            ],
+                        ]
+                    );
+                    if($loggedin){
                             $dropdown = $menu->addChild(
                                 'Hello Me' . $subs,
                                 [
@@ -191,6 +140,7 @@ if($loggedin){
                                     'route' => 'fos_user_profile_show',
                                     'attributes' => [
                                         'divider_append' => true,
+                                        'icon' => 'fas fa-id-card',
                                     ],
                                 ]
                             );
@@ -213,11 +163,13 @@ if($loggedin){
                                     'route' => 'fos_user_security_logout',
                                     'attributes' => [
                                         'divider_prepend' => true,
-                                        'icon' => 'fa fa-sign-out',
+                                        'icon' => 'fas fa-sign-out-alt',
+                                        
                                     ],
+
                                 ]
                             );
-}else{
+                    }else{
                             $dropdown = $menu->addChild(
                                 'Hello Guest' . $subs,
                                 [
@@ -233,6 +185,7 @@ if($loggedin){
                                     'route' => 'fos_user_security_login',
                                     'attributes' => [
                                         'divider_append' => true,
+                                        'icon'  => 'fas fa-sign-in-alt',
                                     ],
                                 ]
                             );
@@ -255,16 +208,11 @@ if($loggedin){
                                     'route' => 'fos_user_registration_register',
                                     'attributes' => [
                                         'divider_prepend' => true,
-                                        'icon' => 'fa fa-sign-out',
+                                        'icon' => 'fas fa-user-plus',
                                     ],
                                 ]
                             );
-
-
-
-}
-
-///////////////////////////
+                    }//endif logged in
     return $menu;
 }
 /////--- createUserMenu
@@ -274,7 +222,6 @@ if($loggedin){
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////+++ createLiveOnNemu
-
     public function createLiveOnMenu(RequestStack $requestStack)
     {
         
@@ -296,13 +243,6 @@ if($loggedin){
             ]
         ]);
         
-$additional_pages->setAttribute('icon', 'fa fa-bug');
-
-/*        $additional_pages->setAttribute('icon', 'fa fa-bug');
-        $additional_pages->setAttribute('id', "navbarDropdown");
-        $additional_pages->setAttribute('role', "button");
-        $additional_pages->setAttribute('data-toggle', "dropdown");        
-*/
         $dashboard = $factory->createItem('E-commerce', [
             'route' => 'main'
         ]);
@@ -337,13 +277,8 @@ $additional_pages->setAttribute('icon', 'fa fa-bug');
         ]);
 
         $extras->addChild($extra1);
-
-
-//        $menu->addChild($extras);
-
-
+        $menu->addChild($extras);
         /**  end of Live ON menu  **/
-
         return $menu;
     }
 /////--- createLiveOnMenu
@@ -352,12 +287,9 @@ $additional_pages->setAttribute('icon', 'fa fa-bug');
 //          CREATE LANG MENU
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
 /////+++ createLangNemu
 public function createLangMenu(RequestStack $requestStack)
 {
-
     $menu = $this->factory->createItem('root');
     $menu->setChildrenAttribute('class', 'navbar-nav mr-auto');
                 $menu->addChild(

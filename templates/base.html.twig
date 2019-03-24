@@ -46,12 +46,12 @@
                         
                         {% set langarr = languages|split('|') %}
 
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav mlq-auto">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-{{ mymacros.getFlagLangFromLang(app.request.locale) }}"> </span>{{ app.request.locale }}</a>
+                                <a class="nav-link dropdown-toggle" href="#" id="dropdown09" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="flag-icon flag-icon-{{ mymacros.getFlagLangFromLang(app.request.locale) }}"> </span>{{ app.request.locale|trans }}</a>
                                 <div class="dropdown-menu" aria-labelledby="dropdown09">
                                 {% for lang in langarr %}
-                                    <a class="dropdown-item" href="setlang/{{ lang | raw }}"><span class="flag-icon flag-icon-{{ mymacros.getFlagLangFromLang(lang) }}"> </span>  {{ lang }}</a>
+                                    <a class="dropdown-item" href="setlang/{{ lang | raw }}"><span class="flag-icon flag-icon-{{ mymacros.getFlagLangFromLang(lang) }}"> </span>  {{ lang|trans }}</a>
                                 {% endfor %}                                    
                                 </div>
                             </li>
