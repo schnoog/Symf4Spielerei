@@ -4,7 +4,7 @@ Meine ersten Versuche mit Symfony 4.
 Dies beinhaltet
 - FOSUserBundle
 - EasyAdmin
-- Menü mittel pd-menu
+- Menü mittel KNP-Menu-Bundle
 - BootStrap 4 Templates für FOSUserBundle
 - Bootstrap4, JQuery, Propper, Fontsawesome als lokale Version
 
