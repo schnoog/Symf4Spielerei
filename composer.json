@@ -1,7 +1,19 @@
 {
-    "type": "project",
-    "license": "proprietary",
-    "require": {
+		"name": "schnoog/symf4spielerei",
+		"description": "Symfony4, KnpMenuBunde (fixed), EasyAdmin, Bootstrap4 & Fontawesome bundled,",
+		"version": "0.1.0",
+		"type": "library",
+		"keywords": ["symfony4", "bootstrap4","knp-user-bundle" ,"fontawesome"],
+		"time": "2019-03-24",
+		"license": "MIT",
+		"authors": [
+			{
+				"name": "Volker Braun",
+				"email": "schnoog@schnoog.eu",
+				"role": "Developer"
+			}
+		],
+		"require": {
         "php": "^7.1.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
