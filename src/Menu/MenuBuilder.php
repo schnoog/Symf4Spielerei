@@ -6,17 +6,19 @@ namespace App\Menu;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Security;
-
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class MenuBuilder
 {
     private $factory;
     private $security;
+    private $params;
 
-    public function __construct(FactoryInterface $factory , Security $security)
+    public function __construct(FactoryInterface $factory , Security $security, ParameterBagInterface $params)
     {
         $this->factory = $factory;
         $this->security = $security;
+        $this->params = $params;
     }
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
@@ -347,7 +349,65 @@ $additional_pages->setAttribute('icon', 'fa fa-bug');
 /////--- createLiveOnMenu
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //
-//          CREATE XXXXXXX MENU
+//          CREATE LANG MENU
 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+/////+++ createLangNemu
+public function createLangMenu(RequestStack $requestStack)
+{
+
+    $menu = $this->factory->createItem('root');
+    $menu->setChildrenAttribute('class', 'navbar-nav mr-auto');
+                $menu->addChild(
+                    'Languages',
+                    [
+                        'labelAttributes' => [
+                            'class' => 'class3 class4',
+                        ],
+                    ]
+                );
+                            $dropdown = $menu->addChild(
+                                'Languages' ,
+                                [
+                                    'attributes' => [
+                                        'dropdown' => true,
+                                    ],
+                                ]
+                            );
+        $allowedlangs = $this->params->get('app_locales');
+        $langs = explode('|',$allowedlangs);
+                    for($x=0;$x<count($langs);$x++){
+                        $lang = $langs[$x];
+
+                            $dropdown->addChild(
+                                 $lang,
+                                [
+                                    'uri' => 'setlang/'. $lang,
+                                    'label' => $lang,
+                                    'icon' => 'flag-icon-' . $lang,
+                                    'attributes' => [
+                                        'divider_append' => false,
+                                        'icon' => 'flag-icon-'.$lang,
+                                         
+                                    ],
+                                ]
+                            )
+                            ->setExtra('translation_domain', 'messages');
+
+                    }
+///////////////////////////
+    return $menu;
+}
+/////--- createLangMenu
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//          CREATE XXX MENU
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
 }
