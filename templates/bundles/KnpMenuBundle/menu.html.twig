@@ -1,4 +1,4 @@
-{% extends 'knp_menu.html.twig' %}
+{% extends 'bundles/KnpMenu/knp_menu.html.twig' %}
 
 {% macro setCssClassAttribute(item, type, add) %}
     {% set getter = 'get' ~ type %}
@@ -18,7 +18,7 @@
     https://github.com/bootstrapthemesco/bootstrap-4-multi-dropdown-navbar
     And set the the use_multilevel = true
     #}
-    {% set use_multilevel = false %}
+    {% set use_multilevel = true %}
 
     {% if item.displayed %}
         {%- set attributes = item.attributes %}

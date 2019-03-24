@@ -17,76 +17,97 @@ class MenuBuilder
 
     public function createMainMenu(RequestStack $requestStack)
     {
-        $factory = $this->factory;
-
-        $menu = $factory->createItem('root', [
-            'childrenAttributes' => [
-                'class' => 'nav side-menu'
-            ]
-        ]);
-
-        /**  HOME menu  **/
-
-        $home = $factory->createItem('Home', [
-            'route' => 'main',
-            'childrenAttributes' => [
-                'class' => 'nav child_menu'
-            ]
-        ]);
-        $home->setAttribute('icon', 'fa fa-home');
-        $home->setLabel('Sonicht');
-
-        $menu->addChild($home);
-
-//        leave it here as a reminder
-
-//        $menu['Home']->setLabel('Главная');
-//        $menu['Home']->setAttribute('id', 'menu_admin_pages');
-//        $menu['Home']->setAttribute('class', 'submenu');
 
 
-        $dashboard = $factory->createItem('Dashboard', [
-            'route' => 'test'
-        ]);
+        $menu = $this->factory->createItem('root');
+        //$menu->setExtra('class',"navbar-nav");
+        $menu->setChildrenAttribute('class', 'navbar-nav mr-auto');
+
+$menu->addChild(
+    'texting',
+    [
+        'labelAttributes' => [
+            'class' => 'class3 class4',
+        ],
+    ]
+);
+
+$dropdown = $menu->addChild(
+    'Hello Me',
+    [
+        'attributes' => [
+            'dropdown' => true,
+        ],
+    ]
+);
+
+$dropdown->addChild(
+    'Profile',
+    [
+        'route' => 'fos_user_profile_show',
+        'attributes' => [
+            'divider_append' => true,
+        ],
+    ]
+);
+
+$dropdown->addChild(
+    'text',
+    [
+        'attributes' => [
+            'icon' => 'fa fa-user-circle',
+        ],
+        'labelAttributes' => [
+            'class' => ['class1', 'class2'],
+        ],
+    ]
+);
+
+$dropdown->addChild(
+    'Logout',
+    [
+        'route' => 'fos_user_security_logout',
+        'attributes' => [
+            'divider_prepend' => true,
+            'icon' => 'fa fa-sign-out',
+        ],
+    ]
+);
 
 
-        $dashboard1 = $factory->createItem('Empty page', [
-            'route' => 'main'
-        ]);
-
-        $dashboard2 = $factory->createItem('Dashboard2', [
-            'route' => 'about'
-        ]);
-
-        $home->addChild($dashboard);
-        $home->addChild($dashboard1);
-        $home->addChild($dashboard2);
-
-        /**  end of HOME menu  **/
-
+///////////////////////////
         return $menu;
     }
 
+
     public function createLiveOnMenu(RequestStack $requestStack)
     {
+        
         $factory = $this->factory;
 
         $menu = $factory->createItem('root', [
             'childrenAttributes' => [
-                'class' => 'nav side-menu'
+                'class' => 'navbar-nav mr-auto'
             ]
         ]);
 
         /**  Live ON menu  **/
 
         $additional_pages = $factory->createItem('Additional pages', [
-            'route' => 'e-commerce',
+            'route' => 'test',
             'childrenAttributes' => [
-                'class' => 'nav child_menu'
+                'class' => 'nav child_menu',
+
             ]
         ]);
-        $additional_pages->setAttribute('icon', 'fa fa-bug');
+        
+$additional_pages->setAttribute('icon', 'fa fa-bug');
 
+/*        $additional_pages->setAttribute('icon', 'fa fa-bug');
+        $additional_pages->setAttribute('id', "navbarDropdown");
+        $additional_pages->setAttribute('role', "button");
+        $additional_pages->setAttribute('data-toggle', "dropdown");        
+*/
         $dashboard = $factory->createItem('E-commerce', [
             'route' => 'main'
         ]);
@@ -107,21 +128,23 @@ class MenuBuilder
         $menu->addChild($additional_pages);
 
         $extras = $factory->createItem('Extras', [
-            'route' => 'e-commerce',
+            'route' => 'main',
             'childrenAttributes' => [
                 'class' => 'nav child_menu'
             ]
         ]);
         $extras->setAttribute('icon', 'fa fa-windows');
-
+        $extras->setAttribute('id', "navbarDropdown");
+        $extras->setAttribute('role', "button");
+        $extras->setAttribute('data-toggle', "dropdown");   
         $extra1 = $factory->createItem('Extra1', [
-            'route' => 'extra1'
+            'route' => 'test'
         ]);
 
         $extras->addChild($extra1);
 
 
-        $menu->addChild($extras);
+//        $menu->addChild($extras);
 
 
         /**  end of Live ON menu  **/
