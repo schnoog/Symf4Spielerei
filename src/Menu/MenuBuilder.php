@@ -5,80 +5,273 @@ namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Security;
+
 
 class MenuBuilder
 {
     private $factory;
+    private $security;
 
-    public function __construct(FactoryInterface $factory)
+    public function __construct(FactoryInterface $factory , Security $security)
     {
         $this->factory = $factory;
+        $this->security = $security;
     }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//          CREATE MAIN MENU
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////+++ createUserNemu
     public function createMainMenu(RequestStack $requestStack)
     {
-
+        $subs = "";
+        if ($this->security->isGranted('ROLE_ADMIN')) {
+            $subs = "-Admin";
+        }
+        $loggedin = false;
+        if ($this->security->isGranted('ROLE_USER')) {
+            $loggedin = true;
+        }
 
         $menu = $this->factory->createItem('root');
         //$menu->setExtra('class',"navbar-nav");
         $menu->setChildrenAttribute('class', 'navbar-nav mr-auto');
 
-$menu->addChild(
-    'texting',
-    [
-        'labelAttributes' => [
-            'class' => 'class3 class4',
-        ],
-    ]
-);
+        //$tmp = $this->get('security.context')->getToken()->getUser();
 
-$dropdown = $menu->addChild(
-    'Hello Me',
-    [
-        'attributes' => [
-            'dropdown' => true,
-        ],
-    ]
-);
+                    $menu->addChild(
+                        'texting',
+                        [
+                            'labelAttributes' => [
+                                'class' => 'class3 class4',
+                            ],
+                        ]
+                    );
+if($loggedin){
+                                $dropdown = $menu->addChild(
+                                    'Hello Me' . $subs,
+                                    [
+                                        'attributes' => [
+                                            'dropdown' => true,
+                                        ],
+                                    ]
+                                );
 
-$dropdown->addChild(
-    'Profile',
-    [
-        'route' => 'fos_user_profile_show',
-        'attributes' => [
-            'divider_append' => true,
-        ],
-    ]
-);
+                                $dropdown->addChild(
+                                    'Profile',
+                                    [
+                                        'route' => 'fos_user_profile_show',
+                                        'attributes' => [
+                                            'divider_append' => true,
+                                        ],
+                                    ]
+                                );
 
-$dropdown->addChild(
-    'text',
-    [
-        'attributes' => [
-            'icon' => 'fa fa-user-circle',
-        ],
-        'labelAttributes' => [
-            'class' => ['class1', 'class2'],
-        ],
-    ]
-);
+                                $dropdown->addChild(
+                                    'text',
+                                    [
+                                        'attributes' => [
+                                            'icon' => 'fa fa-user-circle',
+                                        ],
+                                        'labelAttributes' => [
+                                            'class' => ['class1', 'class2'],
+                                        ],
+                                    ]
+                                );
 
-$dropdown->addChild(
-    'Logout',
-    [
-        'route' => 'fos_user_security_logout',
-        'attributes' => [
-            'divider_prepend' => true,
-            'icon' => 'fa fa-sign-out',
-        ],
-    ]
-);
+                                $dropdown->addChild(
+                                    'Logout',
+                                    [
+                                        'route' => 'fos_user_security_logout',
+                                        'attributes' => [
+                                            'divider_prepend' => true,
+                                            'icon' => 'fa fa-sign-out',
+                                        ],
+                                    ]
+                                );
+}else{
+                                $dropdown = $menu->addChild(
+                                    'Hello Guest' . $subs,
+                                    [
+                                        'attributes' => [
+                                            'dropdown' => true,
+                                        ],
+                                    ]
+                                );
 
+                                $dropdown->addChild(
+                                    'Login',
+                                    [
+                                        'route' => 'fos_user_security_login',
+                                        'attributes' => [
+                                            'divider_append' => true,
+                                        ],
+                                    ]
+                                );
+
+                                $dropdown->addChild(
+                                    'New here?',
+                                    [
+                                        'attributes' => [
+                                            'icon' => 'fa fa-user-circle',
+                                        ],
+                                        'labelAttributes' => [
+                                            'class' => ['class1', 'class2'],
+                                        ],
+                                    ]
+                                );
+
+                                $dropdown->addChild(
+                                    'Register',
+                                    [
+                                        'route' => 'fos_user_registration_register',
+                                        'attributes' => [
+                                            'divider_prepend' => true,
+                                            'icon' => 'fa fa-sign-out',
+                                        ],
+                                    ]
+                                );
+
+
+
+}
 
 ///////////////////////////
         return $menu;
     }
+/////--- createMainMenu
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//          CREATE USER MENU
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////+++ createUserNemu
+public function createUserMenu(RequestStack $requestStack)
+{
+    $subs = "";
+    if ($this->security->isGranted('ROLE_ADMIN')) {
+        $subs = "-Admin";
+    }
+    $loggedin = false;
+    if ($this->security->isGranted('ROLE_USER')) {
+        $loggedin = true;
+    }
 
+    $menu = $this->factory->createItem('root');
+    //$menu->setExtra('class',"navbar-nav");
+    $menu->setChildrenAttribute('class', 'navbar-nav ml-auto');
+
+    //$tmp = $this->get('security.context')->getToken()->getUser();
+
+                $menu->addChild(
+                    'texting',
+                    [
+                        'labelAttributes' => [
+                            'class' => 'class3 class4',
+                        ],
+                    ]
+                );
+if($loggedin){
+                            $dropdown = $menu->addChild(
+                                'Hello Me' . $subs,
+                                [
+                                    'attributes' => [
+                                        'dropdown' => true,
+                                    ],
+                                ]
+                            );
+
+                            $dropdown->addChild(
+                                'Profile',
+                                [
+                                    'route' => 'fos_user_profile_show',
+                                    'attributes' => [
+                                        'divider_append' => true,
+                                    ],
+                                ]
+                            );
+
+                            $dropdown->addChild(
+                                'text',
+                                [
+                                    'attributes' => [
+                                        'icon' => 'fa fa-user-circle',
+                                    ],
+                                    'labelAttributes' => [
+                                        'class' => ['class1', 'class2'],
+                                    ],
+                                ]
+                            );
+
+                            $dropdown->addChild(
+                                'Logout',
+                                [
+                                    'route' => 'fos_user_security_logout',
+                                    'attributes' => [
+                                        'divider_prepend' => true,
+                                        'icon' => 'fa fa-sign-out',
+                                    ],
+                                ]
+                            );
+}else{
+                            $dropdown = $menu->addChild(
+                                'Hello Guest' . $subs,
+                                [
+                                    'attributes' => [
+                                        'dropdown' => true,
+                                    ],
+                                ]
+                            );
+
+                            $dropdown->addChild(
+                                'Login',
+                                [
+                                    'route' => 'fos_user_security_login',
+                                    'attributes' => [
+                                        'divider_append' => true,
+                                    ],
+                                ]
+                            );
+
+                            $dropdown->addChild(
+                                'New here?',
+                                [
+                                    'attributes' => [
+                                        'icon' => 'fa fa-user-circle',
+                                    ],
+                                    'labelAttributes' => [
+                                        'class' => ['class1', 'class2'],
+                                    ],
+                                ]
+                            );
+
+                            $dropdown->addChild(
+                                'Register',
+                                [
+                                    'route' => 'fos_user_registration_register',
+                                    'attributes' => [
+                                        'divider_prepend' => true,
+                                        'icon' => 'fa fa-sign-out',
+                                    ],
+                                ]
+                            );
+
+
+
+}
+
+///////////////////////////
+    return $menu;
+}
+/////--- createUserMenu
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//          CREATE LiveOn MENU
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////+++ createLiveOnNemu
 
     public function createLiveOnMenu(RequestStack $requestStack)
     {
@@ -151,5 +344,10 @@ $additional_pages->setAttribute('icon', 'fa fa-bug');
 
         return $menu;
     }
-
+/////--- createLiveOnMenu
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//          CREATE XXXXXXX MENU
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
