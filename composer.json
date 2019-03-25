@@ -1,7 +1,7 @@
 {
 		"name": "schnoog/symf4spielerei",
 		"description": "Symfony4, KnpMenuBunde (fixed), EasyAdmin, Bootstrap4 & Fontawesome bundled,",
-		"version": "0.1.0",
+		"version": "0.2.1",
 		"type": "library",
 		"keywords": ["symfony4", "bootstrap4","knp-user-bundle" ,"fontawesome"],
 		"time": "2019-03-24",
