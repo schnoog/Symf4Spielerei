@@ -16,47 +16,27 @@ This contains:
 - Bootstrap4, JQuery, Propper, Fontsawesome local (now npm or bower required)
 
 
-Tbh. most copy/paste
-
-## Installation
-
-
-
+Tbh. most is copy/paste
+But at least this project shows how to implement the bundles without the need to search for hours for solutions (like said before, I'm new to Symfony)
+# Installation
 **Composer is required**
-
-
-
-### Clone the Git repo or ### [downlod it](http://https://github.com/schnoog/Symf4Spielerei/archive/master.zip) 
-
+## Get the files
+### Old fashioned way - Clone the Git repo or  [downlod it](http://https://github.com/schnoog/Symf4Spielerei/archive/master.zip) 
 https://github.com/schnoog/Symf4Spielerei.git
-
 `git clone https://github.com/schnoog/Symf4Spielerei.git **TargetDir**`
-
-
-
-#### Change into the TargetDir and install the components ####
-
+Change into the TargetDir and install the components
 `composer install`
+### The composer way
+`composer create-project schnoog/symf4spielerei <TargetDirectory>`
+### Remark
+The composer install script will replace a file in the Knp-Menu-Bundle every time 
+`composer install` oder `composer update` are called.
+> vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php
 
-
-#### Fix KNP-Menu-Bundle  - current release is buggy with SF4.2 ####
 [Find more about the problem here](https://github.com/KnpLabs/KnpMenuBundle/pull/396)
 
-`git checkout vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php`
 
-This changes the lines 
-`$treeBuilder = new TreeBuilder();`
-`$rootNode = $treeBuilder->root('knp_menu');`
-To
-`$treeBuilder = new TreeBuilder('knp_menu');`
-`$rootNode = $treeBuilder->root('knp_menu');`
-`if (method_exists($treeBuilder, 'getRootNode')) {`
-`    $rootNode = $treeBuilder->getRootNode();`
-`} else {`
-`     // BC layer for symfony/config 4.1 and older`
-`    $rootNode = $treeBuilder->root('knp_menu');`
-`}`
-
+## Finalze the installation
 #### Create a database ####
 
 #### copy the .env file ####
