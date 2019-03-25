@@ -77,10 +77,12 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+			"php -r \"copy('bin/Configuration.php_4.2_fixed', 'vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php');\""
         ],
         "post-update-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+			"php -r \"copy('bin/Configuration.php_4.2_fixed', 'vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php');\""
         ]
     },
     "conflict": {
@@ -92,12 +94,5 @@
             "require": "4.2.*"
         }
     },
-	"scripts": {
-        "post-update-cmd": [
-            "php -r \"copy('bin/Configuration.php_4.2_fixed', 'vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php');\""		
-		],
-        "post-install-cmd": [
-            "php -r \"copy('bin/Configuration.php_4.2_fixed', 'vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php');\""
-        ]
-    }
+
 }
