@@ -91,5 +91,13 @@
             "allow-contrib": false,
             "require": "4.2.*"
         }
+    },
+	"scripts": {
+        "post-update-cmd": [
+            "php -r \"copy('bin/Configuration.php_4.2_fixed', 'vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php');\""		
+		],
+        "post-install-cmd": [
+            "php -r \"copy('bin/Configuration.php_4.2_fixed', 'vendor/knplabs/knp-menu-bundle/src/DependencyInjection/Configuration.php');\""
+        ]
     }
 }
